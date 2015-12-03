@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
@@ -20,17 +21,35 @@ public class BaselineExample
     extends JCasAnnotator_ImplBase
 {
 
+	public static final String Param_Message = "Param_Massage";
+	@ConfigurationParameter(name = Param_Message, mandatory = true, defaultValue = "Hello Everyone")
+	protected String massage;
+	
     @Override
     public void process(JCas jcas)
         throws AnalysisEngineProcessException
     {
         System.out.println("Document is: " + jcas.getDocumentText());
-        
+                
         Collection<Token> tokens = JCasUtil.select(jcas, Token.class);
-        System.out.println("CAS contains " + tokens.size() + " tokens.");
-        
+        String language = "";
+        for(Token t: tokens){
+        	//System.out.println(t.getCoveredText());
+        	if(t.getCoveredText().equals("Beispiel")){
+        		
+        		language = "DE";
+        			
+        	}
+        	else{
+        		
+        		language = "EN";
+        		
+        	}
+        }
         DetectedLanguage languageAnno = new DetectedLanguage(jcas);
-        languageAnno.setLanguage("EN");
+        languageAnno.setLanguage(language);
         languageAnno.addToIndexes();
+        System.out.println("CAS contains " + tokens.size() + " tokens.");
+        System.out.println(massage);        
     }
 }

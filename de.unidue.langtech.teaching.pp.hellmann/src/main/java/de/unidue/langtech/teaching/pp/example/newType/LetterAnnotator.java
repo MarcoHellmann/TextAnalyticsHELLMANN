@@ -23,11 +23,22 @@ public class LetterAnnotator
             }
         }
         
+        int countLetterA = 0;
+        for(char c : documentText.toCharArray()){
+        	if (c == 'a' || c == 'A') {
+        		countLetterA++;
+        	}
+        }
+        
         //Set this integer value to the property of the new type 'MyType'
         MyType myType = new MyType(jcas);
         myType.setCountLetterE(countLetterE);
+        myType.setCountLetterA(countLetterA);
         myType.addToIndexes();
-
+        
+    
+        //System.out.println("Anzahl E:" + countLetterE + " " + "Anzahl A:" + countLetterA);
+        
     }
 
 }

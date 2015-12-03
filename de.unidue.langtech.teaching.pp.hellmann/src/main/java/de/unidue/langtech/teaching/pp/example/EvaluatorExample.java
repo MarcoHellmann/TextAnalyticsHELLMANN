@@ -42,7 +42,10 @@ public class EvaluatorExample
         GoldLanguage actual = JCasUtil.selectSingle(jcas, GoldLanguage.class);
 
         System.out.println(actual.getLanguage() + " detected as " + detected.getLanguage());
-        
+        if (actual.getLanguage().equals(detected.getLanguage())){
+        	correct += 1; 
+        }
+        nrOfDocuments ++;
         // FIXME: Keep track of correctly classified documents! 
     }
 
