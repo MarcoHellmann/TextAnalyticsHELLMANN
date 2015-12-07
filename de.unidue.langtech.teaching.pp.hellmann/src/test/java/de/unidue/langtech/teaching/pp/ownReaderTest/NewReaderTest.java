@@ -187,8 +187,8 @@ public class NewReaderTest
     private CollectionReaderDescription getReader()
         throws Exception
     {
-        return CollectionReaderFactory.createReaderDescription(NewReader.class,
-                NewReader.PARAM_INPUT_FILE, "src/test/resources/test/inputNewFormat.txt");
+        return CollectionReaderFactory.createReaderDescription(NewReaderSolution.class,
+                NewReaderSolution.PARAM_INPUT_FILE, "src/test/resources/test/inputNewFormat.txt");
     }
 
 }

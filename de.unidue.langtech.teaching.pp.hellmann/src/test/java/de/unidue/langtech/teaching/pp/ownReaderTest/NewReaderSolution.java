@@ -87,10 +87,10 @@ public class NewReaderSolution
         for (int i = 1; i < entry.size(); i++) {
             String word = entry.get(i);
             documentText += word;
-
+            
             // add the token annotated as own type
             int start = documentText.length() - word.length();
-            int end = documentText.length();
+            int end = documentText.length();        
             Token t = new Token(aJCas, start, end);
             t.addToIndexes();
 
