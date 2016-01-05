@@ -9,7 +9,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.unidue.langtech.teaching.pp.type.DetectedLanguage;
+import de.unidue.langtech.teaching.pp.type.DetectedSentiment;
 
 /**
  * The baseline always identifies "EN" as the document language.
@@ -32,23 +32,23 @@ public class BaselineExample
         System.out.println("Document is: " + jcas.getDocumentText());
                 
         Collection<Token> tokens = JCasUtil.select(jcas, Token.class);
-        String language = "";
+        String sentiment = "";
         for(Token t: tokens){
         	//System.out.println(t.getCoveredText());
         	if(t.getCoveredText().equals("Beispiel")){
         		
-        		language = "DE";
+        		sentiment = "DE";
         			
         	}
         	else{
         		
-        		language = "EN";
+        		sentiment = "EN";
         		
         	}
         }
-        DetectedLanguage languageAnno = new DetectedLanguage(jcas);
-        languageAnno.setLanguage(language);
-        languageAnno.addToIndexes();
+        DetectedSentiment sentimentAnno = new DetectedSentiment(jcas);
+        sentimentAnno.setSentiment(sentiment);
+        sentimentAnno.addToIndexes();
         System.out.println("CAS contains " + tokens.size() + " tokens.");
         System.out.println(massage);        
     }

@@ -14,16 +14,16 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
 
-import de.unidue.langtech.teaching.pp.type.GoldLanguage;
+import de.unidue.langtech.teaching.pp.type.GoldSentiment;
 
 /**
- * Example of a simple reader that reads a text file 
- * and puts each line of the file in a single document.
+ * Simple reader that reads a text file 
+ * and puts each Twitter comment of the file in a single document.
  * 
- * @author zesch
+ * @author zesch, modification by hellmann
  *
  */
-public class ReaderExample
+public class Reader
     extends JCasCollectionReader_ImplBase
 {
 
@@ -47,8 +47,10 @@ public class ReaderExample
         super.initialize(context);
         
         try {
-           lines = FileUtils.readLines(inputFile);
-           currentLine = 0;
+        	
+        	lines = FileUtils.readLines(inputFile);
+        	currentLine = 0;
+        	
         }
         catch (IOException e) {
             throw new ResourceInitializationException(e);
@@ -63,31 +65,32 @@ public class ReaderExample
         throws IOException, CollectionException
     {
         return currentLine < lines.size();
+    	
     }
     
     
     /* 
-     * feeds the next document into the pipeline
+     * feeds the next document (twitter entry) into the pipeline
      */
     @Override
     public void getNext(JCas jcas)
         throws IOException, CollectionException
     {
-        // split line into gold standard language and actual text
-        String[] parts = lines.get(currentLine).split("#");
+        // split line into gold standard sentiment and actual text
+        String[] parts = lines.get(currentLine).split("\t");
         
         // it is always good to do some sanity checks
-        if (parts.length != 2) {
+        if (parts.length != 3) {
             throw new IOException("Wrong line format: " + lines.get(currentLine));
         }
         
         // add gold standard value as annotation
-        GoldLanguage goldLanguage = new GoldLanguage(jcas);
-        goldLanguage.setLanguage(parts[0]);
-        goldLanguage.addToIndexes();
+        GoldSentiment goldSentiment = new GoldSentiment(jcas);
+        goldSentiment.setSentiment(parts[1]);
+        goldSentiment.addToIndexes();
         
-        // add actual text of the document
-        jcas.setDocumentText(parts[1]);
+        // add actual text of the document (tweet)
+        jcas.setDocumentText(parts[2]);
         
         currentLine++;
     }

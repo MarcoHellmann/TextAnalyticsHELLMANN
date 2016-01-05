@@ -16,8 +16,8 @@ public class ReaderExampleTest {
 	@Test
 	public void testReaderExample() throws Exception {
 		CollectionReaderDescription reader = CollectionReaderFactory
-				.createReaderDescription(ReaderExample.class,
-						ReaderExample.PARAM_INPUT_FILE,
+				.createReaderDescription(Reader.class,
+						Reader.PARAM_INPUT_FILE,
 						"src/test/resources/test/input.txt");
 
 		int i = 0;

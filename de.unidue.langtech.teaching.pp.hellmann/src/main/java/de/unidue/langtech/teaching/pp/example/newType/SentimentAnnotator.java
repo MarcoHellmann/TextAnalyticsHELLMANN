@@ -15,7 +15,7 @@ import de.unidue.langtech.teaching.pp.example.Reader;
 import de.unidue.langtech.teaching.pp.type.GoldLanguage;
 import de.unidue.langtech.teaching.pp.type.MyType;
 
-public class LetterAnnotator
+public class SentimentAnnotator
     extends JCasAnnotator_ImplBase
 {
 

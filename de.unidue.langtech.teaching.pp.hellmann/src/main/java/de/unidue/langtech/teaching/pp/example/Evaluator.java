@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example.evaluatorSol;
+package de.unidue.langtech.teaching.pp.example;
 
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -7,10 +7,10 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import de.unidue.langtech.teaching.pp.type.DetectedLanguage;
-import de.unidue.langtech.teaching.pp.type.GoldLanguage;
+import de.unidue.langtech.teaching.pp.type.DetectedSentiment;
+import de.unidue.langtech.teaching.pp.type.GoldSentiment;
 
-public class EvaluatorExample
+public class Evaluator
     extends JCasAnnotator_ImplBase
 {
 
@@ -37,15 +37,16 @@ public class EvaluatorExample
     public void process(JCas jcas)
         throws AnalysisEngineProcessException
     {
-        nrOfDocuments++; 
         
-        DetectedLanguage detected = JCasUtil.selectSingle(jcas, DetectedLanguage.class);
-        GoldLanguage actual = JCasUtil.selectSingle(jcas, GoldLanguage.class);
+        DetectedSentiment detected = JCasUtil.selectSingle(jcas, DetectedSentiment.class);
+        GoldSentiment actual = JCasUtil.selectSingle(jcas, GoldSentiment.class);
 
-        System.out.println(actual.getLanguage() + " detected as " + detected.getLanguage());
-        if (detected.getLanguage().equals(actual.getLanguage())) {
-            correct++;
+        System.out.println(actual.getSentiment() + " detected as " + detected.getSentiment());
+        if (actual.getSentiment().equals(detected.getSentiment())){
+        	correct += 1; 
         }
+        nrOfDocuments ++;
+        // FIXME: Keep track of correctly classified documents! 
     }
 
 

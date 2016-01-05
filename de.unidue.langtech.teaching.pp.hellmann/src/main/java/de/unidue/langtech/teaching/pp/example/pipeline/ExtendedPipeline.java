@@ -6,8 +6,8 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unidue.langtech.teaching.pp.example.BaselineExample;
-import de.unidue.langtech.teaching.pp.example.EvaluatorExample;
-import de.unidue.langtech.teaching.pp.example.ReaderExample;
+import de.unidue.langtech.teaching.pp.example.Evaluator;
+import de.unidue.langtech.teaching.pp.example.Reader;
 
 public class ExtendedPipeline
 {
@@ -17,12 +17,12 @@ public class ExtendedPipeline
     {
         SimplePipeline.runPipeline(
                 CollectionReaderFactory.createReader(
-                        ReaderExample.class,
-                        ReaderExample.PARAM_INPUT_FILE, "src/test/resources/test/input.txt"
+                        Reader.class,
+                        Reader.PARAM_INPUT_FILE, "src/test/resources/test/input.txt"
                 ),
                 AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class),
                 AnalysisEngineFactory.createEngineDescription(BaselineExample.class),
-                AnalysisEngineFactory.createEngineDescription(EvaluatorExample.class)
+                AnalysisEngineFactory.createEngineDescription(Evaluator.class)
         );
     }
 }
