@@ -21,15 +21,15 @@ public class BasicPipeline
         SimplePipeline.runPipeline(
                 CollectionReaderFactory.createReader(
                         Reader.class,
-                        Reader.PARAM_INPUT_FILE, "src/test/resources/test/input.txt"
+                        Reader.PARAM_INPUT_FILE, "src/test/resources/tweets.txt"
                 ),
                 AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class),
                 AnalysisEngineFactory.createEngineDescription(BaselineExample.class, BaselineExample.Param_Message, "neuer Satz"),
-                AnalysisEngineFactory.createEngineDescription(Evaluator.class),
-                AnalysisEngineFactory.createEngineDescription(LetterAnnotator.class),
-                AnalysisEngineFactory.createEngineDescription(SnowballStemmer.class, 
-               		SnowballStemmer.PARAM_LANGUAGE, "en"),
-                AnalysisEngineFactory.createEngineDescription(CasDumpWriter.class)
+                //AnalysisEngineFactory.createEngineDescription(Evaluator.class),
+                AnalysisEngineFactory.createEngineDescription(LetterAnnotator.class)
+                //AnalysisEngineFactory.createEngineDescription(SnowballStemmer.class, 
+               	//	SnowballStemmer.PARAM_LANGUAGE, "en")
+                //AnalysisEngineFactory.createEngineDescription(CasDumpWriter.class)
                 
         );
     }

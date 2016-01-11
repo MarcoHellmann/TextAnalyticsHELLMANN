@@ -14,8 +14,15 @@ public class Evaluator
     extends JCasAnnotator_ImplBase
 {
 
-    private int correct;
-    private int nrOfDocuments;
+    private int correctPositive;
+    private int correctNegative;
+    private int correctNeutral;
+    private int nrOfPositiveDocuments;
+    private int nrOfNegativeDocuments;
+    private int nrOfNeutralDocuments;
+    private double ppositive;
+    private double pnegative;
+    private double pneutral;
     
     /* 
      * This is called BEFORE any documents are processed.
@@ -25,8 +32,15 @@ public class Evaluator
         throws ResourceInitializationException
     {
         super.initialize(context);
-        correct = 0;
-        nrOfDocuments = 0;
+        correctPositive = 0;
+        correctNegative = 0;
+        correctNeutral = 0;
+        nrOfPositiveDocuments = 0;
+        nrOfNegativeDocuments = 0;
+        nrOfNeutralDocuments = 0;
+        ppositive = 0;
+        pnegative = 0;
+        pneutral = 0;
     }
     
     
@@ -43,10 +57,17 @@ public class Evaluator
 
         System.out.println(actual.getSentiment() + " detected as " + detected.getSentiment());
         if (actual.getSentiment().equals(detected.getSentiment())){
-        	correct += 1; 
+        	
+        	if(actual.getSentiment().equals("positive")) correctPositive += 1; 
+        	if(actual.getSentiment().equals("negative")) correctNegative += 1;
+        	if(actual.getSentiment().equals("neutral")) correctNeutral += 1;
         }
-        nrOfDocuments ++;
-        // FIXME: Keep track of correctly classified documents! 
+        
+        if(actual.getSentiment().equals("positive")) nrOfPositiveDocuments += 1;
+        if(actual.getSentiment().equals("negative")) nrOfNegativeDocuments += 1;
+        if(actual.getSentiment().equals("neutral")) nrOfNeutralDocuments += 1;
+        
+       
     }
 
 
@@ -59,6 +80,12 @@ public class Evaluator
     {
         super.collectionProcessComplete();
         
-        System.out.println(correct + " out of " + nrOfDocuments + " are correct.");
+        ppositive = correctPositive/nrOfPositiveDocuments;
+        pnegative = correctNegative/nrOfNegativeDocuments;
+        pneutral = correctNeutral/nrOfNeutralDocuments;
+        
+        System.out.println("Positive:" + correctPositive + " out of " + nrOfPositiveDocuments + " are correct." + "=" + ppositive);
+        System.out.println("Negative:" + correctNegative + " out of " + nrOfNegativeDocuments + " are correct." + "=" + pnegative);
+        System.out.println("Neutral:" + correctNeutral + " out of " + nrOfNeutralDocuments + " are correct." + "=" + pneutral);
     }
 }

@@ -15,6 +15,7 @@ import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
 
 import de.unidue.langtech.teaching.pp.type.GoldSentiment;
+import de.unidue.langtech.teaching.pp.type.ID;
 
 /**
  * Simple reader that reads a text file 
@@ -83,6 +84,11 @@ public class Reader
         if (parts.length != 3) {
             throw new IOException("Wrong line format: " + lines.get(currentLine));
         }
+        
+        //add ID as annotation
+        ID ID = new ID(jcas);
+        ID.setID(parts[0]);
+        ID.addToIndexes();
         
         // add gold standard value as annotation
         GoldSentiment goldSentiment = new GoldSentiment(jcas);
