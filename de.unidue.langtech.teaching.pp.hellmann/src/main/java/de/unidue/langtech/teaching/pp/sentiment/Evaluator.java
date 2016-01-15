@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example;
+package de.unidue.langtech.teaching.pp.sentiment;
 
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -52,7 +52,7 @@ public class Evaluator
         throws AnalysisEngineProcessException
     {
         
-        DetectedSentiment detected = JCasUtil.selectSingle(jcas, DetectedSentiment.class);
+    	DetectedSentiment detected = JCasUtil.selectSingle(jcas, DetectedSentiment.class);
         GoldSentiment actual = JCasUtil.selectSingle(jcas, GoldSentiment.class);
 
         System.out.println(actual.getSentiment() + " detected as " + detected.getSentiment());
@@ -67,7 +67,7 @@ public class Evaluator
         if(actual.getSentiment().equals("negative")) nrOfNegativeDocuments += 1;
         if(actual.getSentiment().equals("neutral")) nrOfNeutralDocuments += 1;
         
-       
+        
     }
 
 
@@ -80,12 +80,13 @@ public class Evaluator
     {
         super.collectionProcessComplete();
         
-        ppositive = correctPositive/nrOfPositiveDocuments;
-        pnegative = correctNegative/nrOfNegativeDocuments;
-        pneutral = correctNeutral/nrOfNeutralDocuments;
+        ppositive = correctPositive / nrOfPositiveDocuments;
+        pnegative = correctNegative / nrOfNegativeDocuments;
+        pneutral = correctNeutral / nrOfNeutralDocuments;
         
-        System.out.println("Positive:" + correctPositive + " out of " + nrOfPositiveDocuments + " are correct." + "=" + ppositive);
-        System.out.println("Negative:" + correctNegative + " out of " + nrOfNegativeDocuments + " are correct." + "=" + pnegative);
-        System.out.println("Neutral:" + correctNeutral + " out of " + nrOfNeutralDocuments + " are correct." + "=" + pneutral);
+        System.out.println(ppositive);
+        System.out.println("Positive:" + correctPositive + " out of " + nrOfPositiveDocuments + " are correct." + " (" + ppositive + ")");
+        System.out.println("Negative:" + correctNegative + " out of " + nrOfNegativeDocuments + " are correct." + " (" + pnegative + ")");
+        System.out.println("Neutral:" + correctNeutral + " out of " + nrOfNeutralDocuments + " are correct." + " (" + pneutral + ")");
     }
 }

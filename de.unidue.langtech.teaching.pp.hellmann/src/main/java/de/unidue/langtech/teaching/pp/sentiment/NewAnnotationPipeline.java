@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example.newType;
+package de.unidue.langtech.teaching.pp.sentiment;
 
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
@@ -7,9 +7,8 @@ import org.springframework.expression.spel.support.ReflectionHelper.ArgsMatchKin
 
 import de.tudarmstadt.ukp.dkpro.core.arktools.ArktweetTokenizer;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
-import de.unidue.langtech.teaching.pp.example.BaselineExample;
-import de.unidue.langtech.teaching.pp.example.Evaluator;
-import de.unidue.langtech.teaching.pp.example.Reader;
+import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.*;
+
 
 public class NewAnnotationPipeline
 {
@@ -22,7 +21,8 @@ public class NewAnnotationPipeline
                         Reader.class,
                         Reader.PARAM_INPUT_FILE, "src/test/resources/tweets.txt"
                 ),
-                AnalysisEngineFactory.createEngineDescription(ArktweetTokenizer.class),
+                AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class),
+                AnalysisEngineFactory.createEngineDescription(StanfordLemmatizer.class),
                 //AnalysisEngineFactory.createEngineDescription(BaselineExample.class),
                 AnalysisEngineFactory.createEngineDescription(
                 		DictCompare.class, 
@@ -30,7 +30,6 @@ public class NewAnnotationPipeline
                 		DictCompare.Param_Input_Dict2, "src/test/resources/Dict/positive.txt"
                 ),
                 AnalysisEngineFactory.createEngineDescription(Evaluator.class)
-                //AnalysisEngineFactory.createEngineDescription(DictCompare.class)
                 //AnalysisEngineFactory.createEngineDescription(Printer.class)
         );
     }

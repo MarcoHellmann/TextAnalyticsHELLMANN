@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example.newType;
+package de.unidue.langtech.teaching.pp.sentiment;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,8 +21,8 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
 
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.unidue.langtech.teaching.pp.example.Reader;
 import de.unidue.langtech.teaching.pp.type.DetectedSentiment;
 import de.unidue.langtech.teaching.pp.type.GoldSentiment;
 import de.unidue.langtech.teaching.pp.type.ID;
@@ -41,6 +41,13 @@ public class DictCompare
 	
 	private List<String> negativeList;
 	private List<String> positiveList; 
+	
+	private int countPositive = 0;
+    private int countNegative = 0;
+	
+    private String sentiment = "";
+    private String negativeSentimentColl = "negative Elemente:";
+    private String positiveSentimentColl = "positive Elemente:";
 	
 	//method to read dict
 	public List<String> readDict(String d) throws IOException{
@@ -92,31 +99,30 @@ public class DictCompare
         //String documentText = jcas.getDocumentText();
         //System.out.println("Document is: " + documentText);
         
-        int countPositive = 0;
-        int countNegative = 0;
+        countPositive = 0;
+        countNegative = 0;
         
         
         Collection<Token> tokens = JCasUtil.select(jcas, Token.class);        
+        sentiment = "";
+        negativeSentimentColl = "negative Elemente:";
+        positiveSentimentColl = "positive Elemente:";
+        Collection<Lemma> lemmas = org.uimafit.util.JCasUtil.select(jcas, Lemma.class);
         
-        String sentiment = "";
-        String negativeSentimentColl = "negative Elemente:";
-        String positiveSentimentColl = "positive Elemente:";
-        
-        
-        for(Token t: tokens){ 
+        for(Lemma l: lemmas){ 
 	       for(int i = 0; i < negativeList.size()-1; i++){
 	        	sentiment = negativeList.get(i);
-	        	if(t.getCoveredText().equals(sentiment)){
+	        	if(l.getCoveredText().equalsIgnoreCase(sentiment)){
 	        		countNegative++;
 	        		negativeSentimentColl = negativeSentimentColl + " " + sentiment;
 	        	}
 	        }
         }
         
-        for(Token t: tokens){ 
+        for(Lemma l: lemmas){ 
  	       for(int i = 0; i < positiveList.size()-1; i++){
  	        	sentiment = positiveList.get(i);
- 	        	if(t.getCoveredText().equals(sentiment)){
+ 	        	if(l.getCoveredText().equalsIgnoreCase(sentiment)){
  	        		countPositive++;
  	        		positiveSentimentColl = positiveSentimentColl + " " + sentiment;
  	        	}
@@ -145,7 +151,7 @@ public class DictCompare
         	detecSentiment.setSentiment("neutral");
         	detecSentiment.addToIndexes();
         }
-        
+                
         
         System.out.println(jcas.getDocumentText());
         System.out.println("Anzahl negativer Elemente: " + countNegative + "\t" + negativeSentimentColl);
@@ -159,6 +165,6 @@ public class DictCompare
    
  
     }
- 
-
+    
+    
 }

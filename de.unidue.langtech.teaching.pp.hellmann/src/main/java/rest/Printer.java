@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example.newType;
+package rest;
 
 import java.util.Collection;
 

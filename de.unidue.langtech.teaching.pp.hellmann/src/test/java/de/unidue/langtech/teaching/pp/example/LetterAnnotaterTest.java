@@ -16,7 +16,7 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
-import de.unidue.langtech.teaching.pp.example.newType.LetterAnnotator;
+import de.unidue.langtech.teaching.pp.sentiment.LetterAnnotator;
 import de.unidue.langtech.teaching.pp.type.GoldLanguage;
 import de.unidue.langtech.teaching.pp.type.MyType;
 

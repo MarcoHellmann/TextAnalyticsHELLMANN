@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example.newType;
+package rest;
 
 import static org.junit.Assert.assertEquals;
 

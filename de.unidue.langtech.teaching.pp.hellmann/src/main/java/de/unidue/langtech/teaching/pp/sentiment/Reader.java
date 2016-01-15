@@ -1,4 +1,4 @@
-package de.unidue.langtech.teaching.pp.example;
+package de.unidue.langtech.teaching.pp.sentiment;
 
 import java.io.File;
 import java.io.IOException;

@@ -103,5 +103,12 @@
   			de.tudarmstadt.ukp.dkpro.core.snowball-asl
   		</artifactId>
   	</dependency>
-  </dependencies>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
+  		</artifactId>
+  		<version>1.4.0</version>
+  	</dependency>
+   </dependencies>
 </project>
