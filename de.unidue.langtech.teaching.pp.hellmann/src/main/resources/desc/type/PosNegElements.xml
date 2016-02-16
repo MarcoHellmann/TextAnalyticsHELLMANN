@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
-  <name>IDType</name>
-  <description>ID of document (String)</description>
+  <name>SentimentType</name>
+  <description>List of detected negative Elements
+List of detected positive Elements </description>
   <version/>
   <vendor/>
   <types>
     <typeDescription>
-      <name>de.unidue.langtech.teaching.pp.type.ID</name>
+      <name>de.unidue.langtech.teaching.pp.type.PosNegElements</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
-          <name>ID</name>
+          <name>ListPosElements</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>ListNegElements</name>
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>
-  </types>
+    </types>
 </typeSystemDescription>

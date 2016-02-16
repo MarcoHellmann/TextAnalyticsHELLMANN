@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Sat Dec 26 13:35:28 CET 2015 */
+/* First created by JCasGen Tue Feb 02 17:25:56 CET 2016 */
 package de.unidue.langtech.teaching.pp.type;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sat Dec 26 14:05:34 CET 2015
+ * Updated by JCasGen Tue Feb 02 17:25:56 CET 2016
  * XML source: C:/Users/Win7ADM/TextAnalyticsHELLMANN/de.unidue.langtech.teaching.pp.hellmann/src/main/resources/desc/type/SentimentType.xml
  * @generated */
 public class Sentiments extends Annotation {
@@ -77,28 +77,6 @@ public class Sentiments extends Annotation {
  
     
   //*--------------*
-  //* Feature: CountPositiveElements
-
-  /** getter for CountPositiveElements - gets 
-   * @generated
-   * @return value of the feature 
-   */
-  public int getCountPositiveElements() {
-    if (Sentiments_Type.featOkTst && ((Sentiments_Type)jcasType).casFeat_CountPositiveElements == null)
-      jcasType.jcas.throwFeatMissing("CountPositiveElements", "de.unidue.langtech.teaching.pp.type.Sentiments");
-    return jcasType.ll_cas.ll_getIntValue(addr, ((Sentiments_Type)jcasType).casFeatCode_CountPositiveElements);}
-    
-  /** setter for CountPositiveElements - sets  
-   * @generated
-   * @param v value to set into the feature 
-   */
-  public void setCountPositiveElements(int v) {
-    if (Sentiments_Type.featOkTst && ((Sentiments_Type)jcasType).casFeat_CountPositiveElements == null)
-      jcasType.jcas.throwFeatMissing("CountPositiveElements", "de.unidue.langtech.teaching.pp.type.Sentiments");
-    jcasType.ll_cas.ll_setIntValue(addr, ((Sentiments_Type)jcasType).casFeatCode_CountPositiveElements, v);}    
-   
-    
-  //*--------------*
   //* Feature: CountNegativeElements
 
   /** getter for CountNegativeElements - gets 
@@ -118,6 +96,28 @@ public class Sentiments extends Annotation {
     if (Sentiments_Type.featOkTst && ((Sentiments_Type)jcasType).casFeat_CountNegativeElements == null)
       jcasType.jcas.throwFeatMissing("CountNegativeElements", "de.unidue.langtech.teaching.pp.type.Sentiments");
     jcasType.ll_cas.ll_setIntValue(addr, ((Sentiments_Type)jcasType).casFeatCode_CountNegativeElements, v);}    
+   
+    
+  //*--------------*
+  //* Feature: CountPositiveElements
+
+  /** getter for CountPositiveElements - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public int getCountPositiveElements() {
+    if (Sentiments_Type.featOkTst && ((Sentiments_Type)jcasType).casFeat_CountPositiveElements == null)
+      jcasType.jcas.throwFeatMissing("CountPositiveElements", "de.unidue.langtech.teaching.pp.type.Sentiments");
+    return jcasType.ll_cas.ll_getIntValue(addr, ((Sentiments_Type)jcasType).casFeatCode_CountPositiveElements);}
+    
+  /** setter for CountPositiveElements - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setCountPositiveElements(int v) {
+    if (Sentiments_Type.featOkTst && ((Sentiments_Type)jcasType).casFeat_CountPositiveElements == null)
+      jcasType.jcas.throwFeatMissing("CountPositiveElements", "de.unidue.langtech.teaching.pp.type.Sentiments");
+    jcasType.ll_cas.ll_setIntValue(addr, ((Sentiments_Type)jcasType).casFeatCode_CountPositiveElements, v);}    
   }
 
     

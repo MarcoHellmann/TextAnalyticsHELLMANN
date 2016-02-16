@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Sat Dec 26 13:39:57 CET 2015 */
+/* First created by JCasGen Tue Feb 02 17:25:56 CET 2016 */
 package de.unidue.langtech.teaching.pp.type;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sat Dec 26 14:05:34 CET 2015
+ * Updated by JCasGen Tue Feb 02 17:25:56 CET 2016
  * XML source: C:/Users/Win7ADM/TextAnalyticsHELLMANN/de.unidue.langtech.teaching.pp.hellmann/src/main/resources/desc/type/SentimentType.xml
  * @generated */
 public class GoldSentiment extends Annotation {
@@ -77,25 +77,25 @@ public class GoldSentiment extends Annotation {
  
     
   //*--------------*
-  //* Feature: sentiment
+  //* Feature: GoldSentiment
 
-  /** getter for sentiment - gets 
+  /** getter for GoldSentiment - gets 
    * @generated
    * @return value of the feature 
    */
-  public String getSentiment() {
-    if (GoldSentiment_Type.featOkTst && ((GoldSentiment_Type)jcasType).casFeat_sentiment == null)
-      jcasType.jcas.throwFeatMissing("sentiment", "de.unidue.langtech.teaching.pp.type.GoldSentiment");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((GoldSentiment_Type)jcasType).casFeatCode_sentiment);}
+  public String getGoldSentiment() {
+    if (GoldSentiment_Type.featOkTst && ((GoldSentiment_Type)jcasType).casFeat_GoldSentiment == null)
+      jcasType.jcas.throwFeatMissing("GoldSentiment", "de.unidue.langtech.teaching.pp.type.GoldSentiment");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((GoldSentiment_Type)jcasType).casFeatCode_GoldSentiment);}
     
-  /** setter for sentiment - sets  
+  /** setter for GoldSentiment - sets  
    * @generated
    * @param v value to set into the feature 
    */
-  public void setSentiment(String v) {
-    if (GoldSentiment_Type.featOkTst && ((GoldSentiment_Type)jcasType).casFeat_sentiment == null)
-      jcasType.jcas.throwFeatMissing("sentiment", "de.unidue.langtech.teaching.pp.type.GoldSentiment");
-    jcasType.ll_cas.ll_setStringValue(addr, ((GoldSentiment_Type)jcasType).casFeatCode_sentiment, v);}    
+  public void setGoldSentiment(String v) {
+    if (GoldSentiment_Type.featOkTst && ((GoldSentiment_Type)jcasType).casFeat_GoldSentiment == null)
+      jcasType.jcas.throwFeatMissing("GoldSentiment", "de.unidue.langtech.teaching.pp.type.GoldSentiment");
+    jcasType.ll_cas.ll_setStringValue(addr, ((GoldSentiment_Type)jcasType).casFeatCode_GoldSentiment, v);}    
   }
 
     

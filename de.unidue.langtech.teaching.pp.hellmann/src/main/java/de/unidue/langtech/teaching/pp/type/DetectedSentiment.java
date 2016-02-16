@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Sat Dec 26 14:05:34 CET 2015 */
+/* First created by JCasGen Tue Feb 02 17:25:56 CET 2016 */
 package de.unidue.langtech.teaching.pp.type;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sat Dec 26 14:05:34 CET 2015
+ * Updated by JCasGen Tue Feb 02 17:25:56 CET 2016
  * XML source: C:/Users/Win7ADM/TextAnalyticsHELLMANN/de.unidue.langtech.teaching.pp.hellmann/src/main/resources/desc/type/SentimentType.xml
  * @generated */
 public class DetectedSentiment extends Annotation {
@@ -77,25 +77,25 @@ public class DetectedSentiment extends Annotation {
  
     
   //*--------------*
-  //* Feature: sentiment
+  //* Feature: DetectedSentiment
 
-  /** getter for sentiment - gets 
+  /** getter for DetectedSentiment - gets 
    * @generated
    * @return value of the feature 
    */
-  public String getSentiment() {
-    if (DetectedSentiment_Type.featOkTst && ((DetectedSentiment_Type)jcasType).casFeat_sentiment == null)
-      jcasType.jcas.throwFeatMissing("sentiment", "de.unidue.langtech.teaching.pp.type.DetectedSentiment");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((DetectedSentiment_Type)jcasType).casFeatCode_sentiment);}
+  public String getDetectedSentiment() {
+    if (DetectedSentiment_Type.featOkTst && ((DetectedSentiment_Type)jcasType).casFeat_DetectedSentiment == null)
+      jcasType.jcas.throwFeatMissing("DetectedSentiment", "de.unidue.langtech.teaching.pp.type.DetectedSentiment");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((DetectedSentiment_Type)jcasType).casFeatCode_DetectedSentiment);}
     
-  /** setter for sentiment - sets  
+  /** setter for DetectedSentiment - sets  
    * @generated
    * @param v value to set into the feature 
    */
-  public void setSentiment(String v) {
-    if (DetectedSentiment_Type.featOkTst && ((DetectedSentiment_Type)jcasType).casFeat_sentiment == null)
-      jcasType.jcas.throwFeatMissing("sentiment", "de.unidue.langtech.teaching.pp.type.DetectedSentiment");
-    jcasType.ll_cas.ll_setStringValue(addr, ((DetectedSentiment_Type)jcasType).casFeatCode_sentiment, v);}    
+  public void setDetectedSentiment(String v) {
+    if (DetectedSentiment_Type.featOkTst && ((DetectedSentiment_Type)jcasType).casFeat_DetectedSentiment == null)
+      jcasType.jcas.throwFeatMissing("DetectedSentiment", "de.unidue.langtech.teaching.pp.type.DetectedSentiment");
+    jcasType.ll_cas.ll_setStringValue(addr, ((DetectedSentiment_Type)jcasType).casFeatCode_DetectedSentiment, v);}    
   }
 
     

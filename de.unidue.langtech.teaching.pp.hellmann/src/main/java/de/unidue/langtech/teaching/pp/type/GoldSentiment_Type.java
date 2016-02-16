@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Sat Dec 26 13:39:57 CET 2015 */
+/* First created by JCasGen Tue Feb 02 17:25:56 CET 2016 */
 package de.unidue.langtech.teaching.pp.type;
 
 import org.apache.uima.jcas.JCas;
@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sat Dec 26 14:05:34 CET 2015
+ * Updated by JCasGen Tue Feb 02 17:25:56 CET 2016
  * @generated */
 public class GoldSentiment_Type extends Annotation_Type {
   /** @generated 
@@ -47,26 +47,26 @@ public class GoldSentiment_Type extends Annotation_Type {
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.unidue.langtech.teaching.pp.type.GoldSentiment");
  
   /** @generated */
-  final Feature casFeat_sentiment;
+  final Feature casFeat_GoldSentiment;
   /** @generated */
-  final int     casFeatCode_sentiment;
+  final int     casFeatCode_GoldSentiment;
   /** @generated
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public String getSentiment(int addr) {
-        if (featOkTst && casFeat_sentiment == null)
-      jcas.throwFeatMissing("sentiment", "de.unidue.langtech.teaching.pp.type.GoldSentiment");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_sentiment);
+  public String getGoldSentiment(int addr) {
+        if (featOkTst && casFeat_GoldSentiment == null)
+      jcas.throwFeatMissing("GoldSentiment", "de.unidue.langtech.teaching.pp.type.GoldSentiment");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_GoldSentiment);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setSentiment(int addr, String v) {
-        if (featOkTst && casFeat_sentiment == null)
-      jcas.throwFeatMissing("sentiment", "de.unidue.langtech.teaching.pp.type.GoldSentiment");
-    ll_cas.ll_setStringValue(addr, casFeatCode_sentiment, v);}
+  public void setGoldSentiment(int addr, String v) {
+        if (featOkTst && casFeat_GoldSentiment == null)
+      jcas.throwFeatMissing("GoldSentiment", "de.unidue.langtech.teaching.pp.type.GoldSentiment");
+    ll_cas.ll_setStringValue(addr, casFeatCode_GoldSentiment, v);}
     
   
 
@@ -82,8 +82,8 @@ public class GoldSentiment_Type extends Annotation_Type {
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
  
-    casFeat_sentiment = jcas.getRequiredFeatureDE(casType, "sentiment", "uima.cas.String", featOkTst);
-    casFeatCode_sentiment  = (null == casFeat_sentiment) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_sentiment).getCode();
+    casFeat_GoldSentiment = jcas.getRequiredFeatureDE(casType, "GoldSentiment", "uima.cas.String", featOkTst);
+    casFeatCode_GoldSentiment  = (null == casFeat_GoldSentiment) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_GoldSentiment).getCode();
 
   }
 }

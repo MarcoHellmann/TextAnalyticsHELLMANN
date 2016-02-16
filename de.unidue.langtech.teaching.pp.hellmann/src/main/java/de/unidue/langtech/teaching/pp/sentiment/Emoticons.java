@@ -1,10 +1,9 @@
 package de.unidue.langtech.teaching.pp.sentiment;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,28 +21,22 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unidue.langtech.teaching.pp.type.PosNegElements;
 import de.unidue.langtech.teaching.pp.type.Sentiments;
 
-public class DictCompare
+public class Emoticons
     extends JCasAnnotator_ImplBase
 {
-	public static final String Param_Input_Dict1 = "Param_Input1";
-	@ConfigurationParameter(name = Param_Input_Dict1, mandatory = true, defaultValue = "src/test/resources/Dict/negative.txt")
-	protected String dictNegative;
+	public static final String Param_Input_Dict = "Param_Input";
+	@ConfigurationParameter(name = Param_Input_Dict, mandatory = false, defaultValue = "src/test/resources/Dict/emoticons.txt")
+	protected String dictEmoticons;
 	
-	public static final String Param_Input_Dict2 = "Param_Input2";
-	@ConfigurationParameter(name = Param_Input_Dict2, mandatory = true, defaultValue = "src/test/resources/Dict/positive.txt")
-	protected String dictPositive;
-	
-	private List<String> negativeList;
-	private List<String> positiveList; 
+	private List<String> Emoslines;
 	
 	private int countPositive = 0;
     private int countNegative = 0;
 	
-    private String sentiment = "";
     private String negativeSentimentColl = "";
     private String positiveSentimentColl = "";
 	
-    //method to read dictionary
+    //method to read dictionary of emoticons
 	public List<String> readDict(String d) throws IOException{
 			FileReader FR = new FileReader (d);
 			BufferedReader BR = new BufferedReader(FR);
@@ -73,15 +66,13 @@ public class DictCompare
 		 super.initialize(context);
 		 
 		 try {
-				negativeList = readDict(dictNegative);
-				positiveList = readDict(dictPositive);
+				Emoslines = readDict(dictEmoticons);
+				//System.out.println(Emoslines);
 			} catch (IOException e) {
 				
 				e.printStackTrace();
 			}
-		 
-		 //System.out.println(negativeList);
-		 //System.out.println(positiveList);
+		
 	    }
 	
 
@@ -89,54 +80,49 @@ public class DictCompare
     public void process(JCas jcas)
         throws AnalysisEngineProcessException
     {
-    	    	        
-   
+ 
         countPositive = 0;
         countNegative = 0;
-        negativeSentimentColl = "";
-        positiveSentimentColl = "";
         
         Collection<Token> tokens = JCasUtil.select(jcas, Token.class);        
         
-        sentiment = "";
+        negativeSentimentColl = "";
+ 		positiveSentimentColl = "";
+
         
         for(Token t: tokens){ 
-	       for(int i = 0; i < negativeList.size()-1; i++){
-	        	sentiment = negativeList.get(i);
-	        	if(t.getCoveredText().equalsIgnoreCase(sentiment)){
-	        		countNegative++;
-	        		negativeSentimentColl = negativeSentimentColl + "\t" + sentiment;
-	        		
-	        	}
+        	String[] parts;
+        	//System.out.print(t.getCoveredText());
+        	for(String s : Emoslines){
+	        	parts = s.split("\t");
+	        	
+	        	if(t.getCoveredText().equalsIgnoreCase(parts[0])){
+	        		String Sentiment = parts[1];
+	        		if (Sentiment.equalsIgnoreCase("positive")){
+	        			countPositive++;
+	        			positiveSentimentColl = positiveSentimentColl + "\t" + parts[0];
+	        			//System.out.println("positive");
+	        		}
+		        	if (Sentiment.equalsIgnoreCase("negative")){
+		        		countNegative++;
+		        		negativeSentimentColl = negativeSentimentColl + "\t" + parts[0];
+		        		//System.out.println("negative");
+		        	}	        		
+	        	}	        	
 	        }
         }
-        
-        for(Token t: tokens){ 
- 	       for(int i = 0; i < positiveList.size()-1; i++){
- 	        	sentiment = positiveList.get(i);
- 	        	if(t.getCoveredText().equalsIgnoreCase(sentiment)){
- 	        		countPositive++;
- 	        		positiveSentimentColl = positiveSentimentColl + "\t" + sentiment;
- 	        			
- 	        	}
- 	        }
-         }
-   
       
-        //Annotates the detected sentiment elements
+        //Annotates the detected emoticons
         PosNegElements PosNegElements = JCasUtil.selectSingle(jcas, PosNegElements.class);
         PosNegElements.setListPosElements(PosNegElements.getListPosElements() + positiveSentimentColl);	
  		PosNegElements.setListNegElements(PosNegElements.getListNegElements() + negativeSentimentColl);
-		
         
-        //Annotates the new number of detected sentiments
+        //Annotates the new number of detected emoticons
  		Sentiments Sentiments = JCasUtil.selectSingle(jcas, Sentiments.class);
 		Sentiments.setCountNegativeElements(Sentiments.getCountNegativeElements() + countNegative);
 		Sentiments.setCountPositiveElements(Sentiments.getCountPositiveElements() + countPositive);
-		
-		
-		
-    }
+	
+	}
     
     
 }

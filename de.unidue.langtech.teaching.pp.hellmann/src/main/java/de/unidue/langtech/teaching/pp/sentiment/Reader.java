@@ -14,8 +14,11 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
 
+import de.unidue.langtech.teaching.pp.type.DetectedSentiment;
 import de.unidue.langtech.teaching.pp.type.GoldSentiment;
 import de.unidue.langtech.teaching.pp.type.ID;
+import de.unidue.langtech.teaching.pp.type.PosNegElements;
+import de.unidue.langtech.teaching.pp.type.Sentiments;
 
 /**
  * Simple reader that reads a text file 
@@ -85,20 +88,40 @@ public class Reader
             throw new IOException("Wrong line format: " + lines.get(currentLine));
         }
         
-        //add ID as annotation
+        // add ID as annotation
         ID ID = new ID(jcas);
         ID.setID(parts[0]);
         ID.addToIndexes();
         
         // add gold standard value as annotation
         GoldSentiment goldSentiment = new GoldSentiment(jcas);
-        goldSentiment.setSentiment(parts[1]);
+        goldSentiment.setGoldSentiment(parts[1]);
         goldSentiment.addToIndexes();
+        
+    	// add detected sentiment value as annotation
+        DetectedSentiment detectedSentiment = new DetectedSentiment(jcas);
+        detectedSentiment.setDetectedSentiment("");
+        detectedSentiment.addToIndexes();
         
         // add actual text of the document (tweet)
         jcas.setDocumentText(parts[2]);
         
+        // add positive and negative elements as annotation and set it to default 
+        PosNegElements PosNegElements = new PosNegElements(jcas);
+        PosNegElements.setListPosElements("");
+ 		PosNegElements.setListNegElements("");
+ 		PosNegElements.addToIndexes();
+        
+        // add number of counted sentiment-elements as annotation and set to zero 
+        Sentiments Sentiments = new Sentiments(jcas);
+		Sentiments.setCountNegativeElements(0);
+		Sentiments.setCountPositiveElements(0);
+		Sentiments.addToIndexes();
+		
         currentLine++;
+        
+        //System.out.println(PosNegElements.getListPosElements());
+        //System.out.println(PosNegElements.getListNegElements());
     }
 
     
