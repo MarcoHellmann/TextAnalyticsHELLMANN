@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -21,11 +20,12 @@ public class Printer
     extends JCasAnnotator_ImplBase  
 {
 	
-	private ArrayList<String> l1;
-	private List<String> l2;
-	private List<String> l3;
-	private List<String> l4;
-	private int n = 0;
+
+	private ArrayList<String> l1 = new ArrayList<String>();
+	private ArrayList<String> l2 = new ArrayList<String>();
+	private ArrayList<String> l3 = new ArrayList<String>();
+	private ArrayList<String> l4 = new ArrayList<String>();
+	
 	
     @Override
     public void process(JCas jcas)
@@ -44,55 +44,46 @@ public class Printer
         String s4 = gold.getGoldSentiment() + " detected as " + detected.getDetectedSentiment();
         
         l1.add(s1);
-        System.out.println(s1);
-        System.out.println(s2);
-        System.out.println(s3);
-        System.out.println(s4);
-//       if (n < 5){
+        l2.add(s2);
+        l3.add(s3);
+        l4.add(s4);
         
-//       l2.add(n, s2);
-//       l3.add(n, s3);
-//       l4.add(n, s4);
-//       n++; 
-//       } 
-//       
-		
-//        System.out.println(ID.getID() + " " + jcas.getDocumentText());
-//        System.out.println("Anzahl negativer Elemente: " + Sentiments.getCountNegativeElements() + "\t" + "Negative Elemente: " + PosNegElements.getListNegElements());
-//        System.out.println("Anzahl positiver Elemente: " + Sentiments.getCountPositiveElements() + "\t" + "Positive Elemente: " + PosNegElements.getListPosElements());
-//        System.out.println(gold.getGoldSentiment() + " detected as " + detected.getDetectedSentiment());
-//        System.out.println("");
+        System.out.println(ID.getID() + " of 11337");
           
         
     }
-//    @Override
-//    public void collectionProcessComplete()
-//        throws AnalysisEngineProcessException
-//    {
-//        super.collectionProcessComplete();
-//        
-//        try {
-//        	FileWriter FW = new FileWriter("src/main/resources/output/output.txt");
-//    		BufferedWriter BW = new BufferedWriter(FW);	
-//    		
-//    		for (int i = 1; i < (l2.size()-1); i++){
-//        		BW.write(l1.get(i));
-//    			BW.newLine();
-//    			BW.write(l2.get(i));
-//    			BW.newLine();
-//    			BW.write(l3.get(i));
-//    			BW.newLine();
-//    			BW.write(l4.get(i));
-//    			BW.newLine();
-//    			BW.newLine();
-//    			
-//    			BW.close();
-//    		}
-//    	}   catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} 
-//        
-//    }
+    
+    
+    
+    @Override
+    public void collectionProcessComplete()
+        throws AnalysisEngineProcessException
+    {
+        super.collectionProcessComplete();
+        
+        try {
+        	FileWriter FW = new FileWriter("src/main/resources/output/output.txt");
+    		BufferedWriter BW = new BufferedWriter(FW);	
+    		
+    		for (int i = 0; i < (l1.size()); i++){
+        		BW.write(l1.get(i));
+    			BW.newLine();
+    			BW.write(l2.get(i));
+    			BW.newLine();
+    			BW.write(l3.get(i));
+    			BW.newLine();
+    			BW.write(l4.get(i));
+    			BW.newLine();
+    			BW.newLine();
+    		}
+    		
+    		BW.close();
+    		
+    	}   catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+        
+    }
 
 }

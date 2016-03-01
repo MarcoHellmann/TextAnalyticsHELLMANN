@@ -12,7 +12,7 @@ public class NewAnnotationPipeline
     public static void main(String[] args)
         throws Exception
     {
-        System.out.println("NewAnnotationPipeline is running...");
+        System.out.println("NewAnnotationPipeline is running...\n\nprocessed: ");
         System.out.println("");
     	SimplePipeline.runPipeline(
                 CollectionReaderFactory.createReader(
@@ -26,8 +26,8 @@ public class NewAnnotationPipeline
                 		),
                 AnalysisEngineFactory.createEngineDescription(
                 		DictCompare.class, 
-                		DictCompare.Param_Input_Dict1, "src/main/resources/Dict/negative.txt",
-                		DictCompare.Param_Input_Dict2, "src/main/resources/Dict/positive.txt"
+                		DictCompare.Param_Input_Dict1, "src/main/resources/dict/negative.txt",
+                		DictCompare.Param_Input_Dict2, "src/main/resources/dict/positive.txt"
                 		),
                 AnalysisEngineFactory.createEngineDescription(SentiElementsEvaluator.class),
                 AnalysisEngineFactory.createEngineDescription(Printer.class),

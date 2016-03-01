@@ -12,16 +12,16 @@ public class AnnotationPipeline
     public static void main(String[] args)
         throws Exception
     {
-    			System.out.println("AnnotationPipeline is running...");
+    			System.out.println("AnnotationPipeline is running...\n\nprocessed: ");
     			System.out.println("");
         		SimplePipeline.runPipeline(
                 CollectionReaderFactory.createReader(
                         Reader.class,
-                        Reader.PARAM_INPUT_FILE, "src/main/resources/tweets.txt"
+                        Reader.PARAM_INPUT_FILE, "src/main/resources//tweets/tweets.txt"
                 ),
                 AnalysisEngineFactory.createEngineDescription(ArktweetTokenizer.class),
                 //AnalysisEngineFactory.createEngineDescription(StanfordLemmatizer.class),
-                AnalysisEngineFactory.createEngineDescription(Baseline.class, Baseline.Param_Input_ToDetectSentiment, "neutral"),
+                AnalysisEngineFactory.createEngineDescription(Baseline.class, Baseline.Param_Input_ToDetectSentiment, "negative"),
                 AnalysisEngineFactory.createEngineDescription(PipelineEvaluator.class),
                 AnalysisEngineFactory.createEngineDescription(Printer.class)
         );

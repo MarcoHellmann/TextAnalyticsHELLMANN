@@ -106,16 +106,24 @@ public class PipelineEvaluator
     {
         super.collectionProcessComplete();
         
-        PositivePrecision = pdPositive / NrPositiveDetected ;
-        NegativePrecision = ndNegative / NrNegativeDetected;
         
         PositiveRecall = pdPositive / NrPositiveGold;
         NegativeRecall = ndNegative / NrNegativeGold;
         
+        PositivePrecision = pdPositive / NrPositiveDetected ;
+        NegativePrecision = ndNegative / NrNegativeDetected;
+        if (NrPositiveDetected == 0) PositivePrecision = 0;
+        if (NrNegativeDetected == 0) NegativePrecision = 0;
+                
+        
         F1_Positive = 2*PositivePrecision*PositiveRecall/(PositivePrecision+PositiveRecall);
         F1_Negative = 2*NegativePrecision*NegativeRecall/(NegativePrecision+NegativeRecall);
+        if (PositivePrecision+PositiveRecall == 0) F1_Positive = 0;
+        if (NegativePrecision+NegativeRecall == 0) F1_Negative = 0;
+        
         Score = (F1_Positive + F1_Negative) / 2;
         
+        System.out.println("");
         System.out.println("Nr. of positive tweets: " + NrPositiveGold);
         System.out.println("Nr. of negative tweets: " + NrNegativeGold);
         System.out.println("overall detected as positive: " + NrPositiveDetected);

@@ -1,7 +1,5 @@
 package de.unidue.langtech.teaching.pp.sentiment;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,7 +14,6 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unidue.langtech.teaching.pp.type.PosNegElements;
@@ -26,11 +23,11 @@ public class DictCompare
     extends JCasAnnotator_ImplBase
 {
 	public static final String Param_Input_Dict1 = "Param_Input1";
-	@ConfigurationParameter(name = Param_Input_Dict1, mandatory = true, defaultValue = "src/test/resources/Dict/negative.txt")
+	@ConfigurationParameter(name = Param_Input_Dict1, mandatory = false, defaultValue = "src/main/resources/dict/negative.txt")
 	protected String dictNegative;
 	
 	public static final String Param_Input_Dict2 = "Param_Input2";
-	@ConfigurationParameter(name = Param_Input_Dict2, mandatory = true, defaultValue = "src/test/resources/Dict/positive.txt")
+	@ConfigurationParameter(name = Param_Input_Dict2, mandatory = false, defaultValue = "src/main/resources/dict/positive.txt")
 	protected String dictPositive;
 	
 	private List<String> negativeList;
@@ -80,8 +77,8 @@ public class DictCompare
 				e.printStackTrace();
 			}
 		 
-		 //System.out.println(negativeList);
-		 //System.out.println(positiveList);
+//		 System.out.println(negativeList);
+//		 System.out.println(positiveList);
 	    }
 	
 
