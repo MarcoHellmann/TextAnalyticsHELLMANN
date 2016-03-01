@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <name>SentimentType</name>
-  <description>detected positive elemente (List)
-detected negative elements (List)</description>
+  <description>detected Sentiment (String)
+GoldSentiment (String)
+
+number of detected positive elements (int)
+number of detected negative elements (int)</description>
   <version/>
   <vendor/>
   <types>

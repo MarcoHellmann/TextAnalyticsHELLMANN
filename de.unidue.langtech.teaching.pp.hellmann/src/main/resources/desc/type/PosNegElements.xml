@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <name>SentimentType</name>
-  <description>List of detected negative Elements
-List of detected positive Elements </description>
+  <description>List of detected negative Elements (String)
+List of detected positive Elements (String)</description>
   <version/>
   <vendor/>
   <types>
