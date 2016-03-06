@@ -124,8 +124,8 @@ public class PipelineEvaluator
         Score = (F1_Positive + F1_Negative) / 2;
         
         System.out.println("");
-        System.out.println("Nr. of positive tweets: " + NrPositiveGold);
-        System.out.println("Nr. of negative tweets: " + NrNegativeGold);
+        System.out.println("number of positive tweets: " + NrPositiveGold);
+        System.out.println("number of negative tweets: " + NrNegativeGold);
         System.out.println("overall detected as positive: " + NrPositiveDetected);
         System.out.println("overall detected as negative: " + NrNegativeDetected);
         System.out.println("correctly detected as positive: " + pdPositive);

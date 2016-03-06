@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
@@ -19,7 +20,9 @@ import de.unidue.langtech.teaching.pp.type.Sentiments;
 public class Printer 
     extends JCasAnnotator_ImplBase  
 {
-	
+	public static final String Param_Input_Output = "Param_Output";
+	@ConfigurationParameter(name = Param_Input_Output, mandatory = false, defaultValue = "src/main/resources/output/output.txt")
+	protected String OutputFile;
 
 	private ArrayList<String> l1 = new ArrayList<String>();
 	private ArrayList<String> l2 = new ArrayList<String>();
@@ -48,7 +51,7 @@ public class Printer
         l3.add(s3);
         l4.add(s4);
         
-        System.out.println(ID.getID() + " of 11337");
+        System.out.println("No. " + ID.getID());
           
         
     }
@@ -62,7 +65,7 @@ public class Printer
         super.collectionProcessComplete();
         
         try {
-        	FileWriter FW = new FileWriter("src/main/resources/output/output.txt");
+        	FileWriter FW = new FileWriter(OutputFile);
     		BufferedWriter BW = new BufferedWriter(FW);	
     		
     		for (int i = 0; i < (l1.size()); i++){

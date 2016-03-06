@@ -15,7 +15,7 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.junit.Test;
+
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unidue.langtech.teaching.pp.type.PosNegElements;

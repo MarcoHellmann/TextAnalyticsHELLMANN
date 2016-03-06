@@ -24,13 +24,13 @@ public class EmoticonsTest {
 		JCas jcas = JCasFactory.createJCas();
 		jcas.setDocumentText(text);
 
-		// add positive and negative elements as annotation and set it to default 
+		// add positive and negative elements as annotation and set it to default (normally done by the reader)
         PosNegElements PosNegElements = new PosNegElements(jcas);
         PosNegElements.setListPosElements("");
  		PosNegElements.setListNegElements("");
  		PosNegElements.addToIndexes();
  		
-        // add number of counted sentiment-elements as annotation and set to zero 
+        // add number of counted sentiment-elements as annotation and set to zero (normally done by the reader)
         Sentiments Sentiments = new Sentiments(jcas);
 		Sentiments.setCountNegativeElements(0);
 		Sentiments.setCountPositiveElements(0);
