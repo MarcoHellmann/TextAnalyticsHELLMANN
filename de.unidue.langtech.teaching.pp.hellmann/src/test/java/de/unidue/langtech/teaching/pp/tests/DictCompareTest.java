@@ -19,7 +19,7 @@ import de.unidue.langtech.teaching.pp.type.Sentiments;
 
 public class DictCompareTest {
 	@Test
-	public void testEmoticons() throws UIMAException {
+	public void testDictCompare() throws UIMAException {
 		String text = "Peter is good at playing tennis. But he is bad at playing golf and bad at playing football.";
 
 		JCas jcas = JCasFactory.createJCas();

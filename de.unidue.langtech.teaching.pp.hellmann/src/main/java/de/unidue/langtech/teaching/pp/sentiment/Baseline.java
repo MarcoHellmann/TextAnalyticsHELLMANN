@@ -17,7 +17,7 @@ public class Baseline
     extends JCasAnnotator_ImplBase
 {
 	public static final String Param_Input_ToDetectSentiment = "Param_Sentiment";
-	@ConfigurationParameter(name = Param_Input_ToDetectSentiment, mandatory = false, defaultValue = "neutral")
+	@ConfigurationParameter(name = Param_Input_ToDetectSentiment, mandatory = false, defaultValue = "positive")
 	protected String ToDetectSentiment;		
 	
 	

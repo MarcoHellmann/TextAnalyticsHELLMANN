@@ -31,19 +31,15 @@ public class Reader
     extends JCasCollectionReader_ImplBase
 {
 
-    /**
-     * Input file
-     */
-    public static final String PARAM_INPUT_FILE = "InputFile";
-    @ConfigurationParameter(name = PARAM_INPUT_FILE, mandatory = true)
+   
+    public static final String Param_Input_File = "InputFile";
+    @ConfigurationParameter(name = Param_Input_File, mandatory = true)
     private File inputFile;    
     
     private List<String> lines;
     private int currentLine;
     
-    /* 
-     * initializes the reader
-     */
+   
     @Override
     public void initialize(UimaContext context)
         throws ResourceInitializationException
@@ -62,9 +58,7 @@ public class Reader
     }
     
     
-    /* 
-     * true, if there is a next document, false otherwise
-     */
+   
     public boolean hasNext()
         throws IOException, CollectionException
     {
@@ -73,9 +67,7 @@ public class Reader
     }
     
     
-    /* 
-     * feeds the next document (twitter entry) into the pipeline
-     */
+   
     @Override
     public void getNext(JCas jcas)
         throws IOException, CollectionException
@@ -83,7 +75,7 @@ public class Reader
         // split line into gold standard sentiment and actual text
         String[] parts = lines.get(currentLine).split("\t");
         
-        // it is always good to do some sanity checks
+        // sanity check
         if (parts.length != 3) {
             throw new IOException("Wrong line format: " + lines.get(currentLine));
         }
@@ -125,9 +117,6 @@ public class Reader
     }
 
     
-    /* 
-     * informs the pipeline about the current progress
-     */
     public Progress[] getProgress()
     {
         return new Progress[] { new ProgressImpl(currentLine, lines.size(), "lines") };

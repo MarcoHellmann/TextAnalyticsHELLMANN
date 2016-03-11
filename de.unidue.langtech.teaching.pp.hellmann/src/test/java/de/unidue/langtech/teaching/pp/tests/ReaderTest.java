@@ -29,10 +29,10 @@ import de.unidue.langtech.teaching.pp.type.Sentiments;
 public class ReaderTest {
 
 	@Test
-	public void testReaderExample() throws Exception {
+	public void testReader() throws Exception {
 		CollectionReaderDescription reader = CollectionReaderFactory
 				.createReaderDescription(Reader.class,
-						Reader.PARAM_INPUT_FILE,
+						Reader.Param_Input_File,
 						"src/test/resources/tweets/tweets.txt");
 
 		int i = 0;

@@ -15,10 +15,11 @@ public class NewAnnotationPipeline
     {
         System.out.println("NewAnnotationPipeline is running...\n\nprocessed: ");
         System.out.println("");
-    	SimplePipeline.runPipeline(
+    	
+        SimplePipeline.runPipeline(
                 CollectionReaderFactory.createReader(
                         Reader.class,
-                        Reader.PARAM_INPUT_FILE, "src/main/resources/tweets/tweets.txt"
+                        Reader.Param_Input_File, "src/main/resources/tweets/tweets.txt"
                 		),
                 AnalysisEngineFactory.createEngineDescription(ArktweetTokenizer.class),
                 AnalysisEngineFactory.createEngineDescription(

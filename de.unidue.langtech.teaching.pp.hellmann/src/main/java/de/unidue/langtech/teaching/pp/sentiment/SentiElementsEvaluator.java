@@ -15,9 +15,6 @@ public class SentiElementsEvaluator
 {
 
     
-    /* 
-     * This is called BEFORE any documents are processed.
-     */
     @Override
     public void initialize(UimaContext context)
         throws ResourceInitializationException
@@ -27,9 +24,6 @@ public class SentiElementsEvaluator
     }
     
     
-    /* 
-     * This is called ONCE for each document
-     */
     @Override
     public void process(JCas jcas)
         throws AnalysisEngineProcessException
@@ -56,9 +50,6 @@ public class SentiElementsEvaluator
     }
 
 
-    /* 
-     * This is called AFTER all documents have been processed.
-     */
     @Override
     public void collectionProcessComplete()
         throws AnalysisEngineProcessException

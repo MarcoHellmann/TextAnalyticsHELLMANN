@@ -14,13 +14,13 @@ public class PipelineEvaluator
     extends JCasAnnotator_ImplBase
 {
 
-    private double NrPositiveDetected; // detected = positive
-    private double pdPositive; // gold = positive & detected = positive
+    private double NrPositiveDetected; // detected == positive
+    private double pdPositive; // gold == positive & detected == positive
     
     private double NrNegativeDetected;
     private double ndNegative;
     
-    private double NrPositiveGold; // gold = positive 
+    private double NrPositiveGold; // gold == positive 
     private double NrNegativeGold;
 
     private double PositiveRecall;
@@ -34,9 +34,6 @@ public class PipelineEvaluator
     double Score;
     
     
-    /* 
-     * This is called BEFORE any documents are processed.
-     */
     @Override
     public void initialize(UimaContext context)
         throws ResourceInitializationException
@@ -63,9 +60,7 @@ public class PipelineEvaluator
     }
     
     
-    /* 
-     * This is called ONCE for each document
-     */
+  
     @Override
     public void process(JCas jcas)
         throws AnalysisEngineProcessException
@@ -97,9 +92,6 @@ public class PipelineEvaluator
     }
 
 
-    /* 
-     * This is called AFTER all documents have been processed.
-     */
     @Override
     public void collectionProcessComplete()
         throws AnalysisEngineProcessException

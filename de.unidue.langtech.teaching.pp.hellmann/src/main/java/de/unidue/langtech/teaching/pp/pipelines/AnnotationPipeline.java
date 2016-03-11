@@ -15,21 +15,22 @@ public class AnnotationPipeline
     {
     			System.out.println("AnnotationPipeline is running...\n\nprocessed: ");
     			System.out.println("");
-        		SimplePipeline.runPipeline(
+        		
+    			SimplePipeline.runPipeline(
                 CollectionReaderFactory.createReader(
                         Reader.class,
-                        Reader.PARAM_INPUT_FILE, "src/main/resources//tweets/tweets.txt"
+                        Reader.Param_Input_File, "src/main/resources/tweets/tweets.txt"
                 		),
                 AnalysisEngineFactory.createEngineDescription(
                 		Baseline.class, 
-                		Baseline.Param_Input_ToDetectSentiment, "negative"
+                		Baseline.Param_Input_ToDetectSentiment, "positive"
                 		),
                 AnalysisEngineFactory.createEngineDescription(
                 		PipelineEvaluator.class
                 		),
                 AnalysisEngineFactory.createEngineDescription(
                 		Printer.class, 
-                		Printer.Param_Input_Output, "src/main/resources//output/outputBaseline.txt"
+                		Printer.Param_Input_Output, "src/main/resources/output/outputBaseline.txt"
                 		)
         );
     }

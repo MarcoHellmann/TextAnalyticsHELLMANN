@@ -18,7 +18,7 @@ import de.unidue.langtech.teaching.pp.type.Sentiments;
 
 public class EmoticonsTest {
 	@Test
-	public void testDictCompare() throws UIMAException {
+	public void testEmoticons() throws UIMAException {
 		String text = "Peter is :-) at playing tennis. But he is :-( at playing golf and :-( at playing football.";
 
 		JCas jcas = JCasFactory.createJCas();
