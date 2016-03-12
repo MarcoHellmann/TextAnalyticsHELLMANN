@@ -11,7 +11,6 @@ import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
-import de.unidue.langtech.teaching.pp.sentiment.Baseline;
 import de.unidue.langtech.teaching.pp.sentiment.SentiElementsEvaluator;
 import de.unidue.langtech.teaching.pp.type.DetectedSentiment;
 import de.unidue.langtech.teaching.pp.type.Sentiments;

@@ -33,7 +33,7 @@ public class Reader
 
    
     public static final String Param_Input_File = "InputFile";
-    @ConfigurationParameter(name = Param_Input_File, mandatory = true)
+    @ConfigurationParameter(name = Param_Input_File, mandatory = false, defaultValue = "src/main/resources/tweets/tweets.txt")
     private File inputFile;    
     
     private List<String> lines;
